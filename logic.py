@@ -15,7 +15,6 @@ window = sg.Window('Number Guesser by Odeyalooo', layout)
 def start():
     randomInteger = randomizer.randint(0, 100)
 
-    userProbe = None
     numberOfAttempts = 0
 
     # Event Loop to process "events" and get the "values" of the inputs
@@ -23,6 +22,10 @@ def start():
         event, values = window.read()
         if event == sg.WIN_CLOSED or event == 'Cancel':  # if user closes window or clicks cancel
             break
+        # Added the logic to check if the number is number
+        if not values[0].isnumeric():
+            sg.popup("input the number!")
+            continue
 
         userGuess = int(values[0])
 
