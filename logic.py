@@ -14,7 +14,7 @@ window = sg.Window('Number Guesser by Odeyalooo', layout)
 
 def start():
     randomInteger = randomizer.randint(0, 100)
-
+    print(randomInteger)
     numberOfAttempts = 0
 
     # Event Loop to process "events" and get the "values" of the inputs
@@ -30,7 +30,8 @@ def start():
         userGuess = int(values[0])
 
         if randomInteger == userGuess:
-            sg.popup("You won! Number of attempts: " + str(numberOfAttempts))
+            sg.popup_animated(message="You won! Number of attempts: " + str(numberOfAttempts), image_source="happy-smile.gif"
+                              , time_between_frames=10, title="You won!")
 
         if randomInteger < userGuess:
             window["guess_result"].update("Random number is smaller!")
